@@ -5,3 +5,8 @@ git add README.md
 # Effectuer le premier commit
 git commit -m "init: création du fichier README.md avec le titre du
 projet"
+
+# Modifier le README.md (ajout d'une description)
+echo "Ce projet est un exercice d'initiation à Git." >> README.md
+git add README.md
+git commit -m "docs: ajout de la description du projet dans README.md"
