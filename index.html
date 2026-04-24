@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TalentLink — L'excellence du recrutement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Polices Premium : Clash Display pour les titres et Inter pour le corps -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fdfdfc;
+            --ink: #0d0d0b;
+            --ink-soft: #4a4a44;
+            --white: #ffffff;
+            --primary: #1a5c37; /* Vert plus profond et premium */
+            --primary-lt: #f0f7f2;
+            --accent: #ff6b35; /* Corail pour les accents */
+            --line: rgba(13, 13, 11, 0.06);
+            --font-title: 'Clash Display', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --r-sm: 8px;
+            --r-md: 14px;
+            --r-lg: 24px;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--ink); 
+            font-family: var(--font-body); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.25rem 5%;
+            background: rgba(253, 253, 252, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo { 
+            font-family: var(--font-title); 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            color: var(--ink); 
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--ink-soft); 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.8rem 1.6rem; border-radius: var(--r-sm);
+            font-size: 0.9rem; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .btn-solid { background: var(--ink); color: var(--white); }
+        .btn-solid:hover { transform: translateY(-2px); background: var(--primary); box-shadow: 0 8px 20px rgba(26, 92, 55, 0.2); }
+        .btn-outline { border-color: var(--line); color: var(--ink); background: var(--white); }
+        .btn-outline:hover { border-color: var(--ink); background: var(--bg); }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 12rem 5% 6rem;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 6rem;
+            align-items: center; max-width: 1400px; margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            background: var(--primary-lt); color: var(--primary);
+            padding: 0.4rem 1rem; border-radius: 100px;
+            font-size: 0.8rem; font-weight: 600; margin-bottom: 2rem;
+            border: 1px solid rgba(26, 92, 55, 0.1);
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1; font-weight: 600; letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem; color: var(--ink-soft);
+            max-width: 500px; margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        /* ── GLASS CARD ── */
+        .glass-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 2.5rem;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.08);
+        }
+
+        .tabs {
+            display: flex; background: #f4f4f2;
+            padding: 4px; border-radius: 12px; margin-bottom: 2rem;
+        }
+        .tab {
+            flex: 1; text-align: center; padding: 0.7rem;
+            border-radius: 9px; cursor: pointer; font-size: 0.85rem;
+            font-weight: 600; color: var(--ink-soft); transition: all 0.3s;
+        }
+        .tab.active { background: var(--white); color: var(--ink); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            margin-bottom: 0.6rem; color: var(--ink-soft);
+        }
+        .form-group input, .form-group select {
+            width: 100%; padding: 0.9rem 1.25rem;
+            border: 1px solid #e2e2de; border-radius: 10px;
+            font-family: var(--font-body); font-size: 0.95rem;
+            outline: none; transition: border-color 0.3s;
+        }
+        .form-group input:focus { border-color: var(--primary); }
+
+        /* ── SECTIONS ── */
+        section { padding: 8rem 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .section-tag {
+            font-weight: 700; color: var(--primary); font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.2em;
+            display: block; margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-family: var(--font-title); font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600; letter-spacing: -0.03em; line-height: 1.1;
+            margin-bottom: 4rem;
+        }
+
+        /* ── GRID TALENTS ── */
+        .talents-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .talent-card {
+            background: var(--white); border: 1px solid var(--line);
+            border-radius: var(--r-md); padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .talent-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow); }
+
+        .avatar {
+            width: 60px; height: 60px; border-radius: 18px;
+            background: var(--primary-lt); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-family: var(--font-title);
+            font-size: 1.2rem; margin-bottom: 1.5rem;
+        }
+
+        .talent-name { font-family: var(--font-title); font-size: 1.25rem; font-weight: 600; }
+        .talent-role { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .tag {
+            font-size: 0.7rem; font-weight: 700; padding: 0.4rem 0.8rem;
+            background: #f4f4f2; border-radius: 6px; color: var(--ink-soft);
+        }
+
+        /* ── OFFRES ── */
+        .job-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.5rem 2rem; background: var(--white);
+            border: 1px solid var(--line); border-radius: var(--r-md);
+            margin-bottom: 1rem; transition: all 0.3s;
+        }
+        .job-row:hover { border-color: var(--primary); background: var(--bg); }
+
+        .job-info h3 { font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .job-meta { color: var(--ink-soft); font-size: 0.85rem; display: flex; gap: 1rem; }
+
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 10rem; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .nav-links { display: none; }
+            .job-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">Talent<span>Link</span></a>
+    <ul class="nav-links">
+        <li><a href="#talents">Talents</a></li>
+        <li><a href="#offres">Opportunités</a></li>
+        <li><a href="#">Solutions Entreprise</a></li>
+    </ul>
+    <div style="display: flex; gap: 1rem;">
+        <a href="#" class="btn btn-outline">Connexion</a>
+        <a href="#" class="btn btn-solid">Recruter</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">
+            <span style="width:8px; height:8px; background:var(--primary); border-radius:50%"></span>
+            Nouveautés : Recrutement IA activé
+        </div>
+        <h1>L'endroit où les <span style="color:var(--primary)">visions</span> rencontrent les talents.</h1>
+        <p class="hero-sub">Oubliez les processus interminables. Nous connectons les entreprises ambitieuses avec les 1% des meilleurs talents mondiaux.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#talents" class="btn btn-solid" style="padding: 1rem 2rem">Explorer les profils</a>
+            <a href="#" class="btn btn-outline" style="padding: 1rem 2rem">En savoir plus</a>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <div class="tabs">
+            <div class="tab active" onclick="toggleTab(this, 'hire')">Je recrute</div>
+            <div class="tab" onclick="toggleTab(this, 'work')">Je cherche</div>
+        </div>
+        <div id="form-hire">
+            <div class="form-group">
+                <label>Quel talent cherchez-vous ?</label>
+                <input type="text" placeholder="ex: Product Designer, Lead Dev...">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>Localisation</label>
+                    <input type="text" placeholder="Paris, Remote...">
+                </div>
+                <div class="form-group">
+                    <label>Séniorité</label>
+                    <select>
+                        <option>Senior (5+ ans)</option>
+                        <option>Confirmé</option>
+                        <option>Junior</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-solid" style="width: 100%; justify-content: center; margin-top: 1rem; padding: 1.1rem">Lancer la recherche →</button>
+        </div>
+    </div>
+</section>
+
+<section id="talents" class="reveal">
+    <span class="section-tag">Curated Talents</span>
+    <h2>Profils vérifiés disponibles.</h2>
+    <div class="talents-grid">
+        <!-- Talent 1 -->
+        <div class="talent-card">
+            <div class="avatar">AM</div>
+            <h3 class="talent-name">Alex Miller</h3>
+            <p class="talent-role">Senior Full-Stack Engineer</p>
+            <div class="tags">
+                <span class="tag">TypeScript</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">PostgreSQL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 2rem;">Expert en scalabilité SaaS avec plus de 8 ans d'expérience chez Stripe et Airbnb.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1.5rem;">
+                <span style="font-weight: 700;">650€ <span style="font-size:0.7rem; color:var(--ink-soft)">/ jour</span></span>
+                <a href="#" style="color:var(--primary); font-weight:700; text-decoration:none; font-size:0.8rem">Voir profil →</a>
+            </div>
+        </div>
+        <!-- Talent 2 -->
+        <div class="talent-card">
+            <div class="avatar" style="background:#fff0e6; color:#ff6b35">SD</div>
+            <h3 class="talent-name">Sarah Drancourt</h3>
+            <p class="talent-role">Product Designer</p>
+            <div class="tags">
+                <span class="tag">Figma</span>
+                <span class="tag">Design Systems</span>
+                <span class="tag">UX Research</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 2rem;">Spécialisée dans les interfaces complexes et le B2B. Orientée data et conversion.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1.5rem;">
+                <span style="font-weight: 700;">550€ <span style="font-size:0.7rem; color:var(--ink-soft)">/ jour</span></span>
+                <a href="#" style="color:var(--primary); font-weight:700; text-decoration:none; font-size:0.8rem">Voir profil →</a>
+            </div>
+        </div>
+        <!-- Talent 3 -->
+        <div class="talent-card">
+            <div class="avatar" style="background:#eef2ff; color:#4f46e5">JB</div>
+            <h3 class="talent-name">Julien Berton</h3>
+            <p class="talent-role">Growth Marketer</p>
+            <div class="tags">
+                <span class="tag">Ads</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Data</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 2rem;">A aidé 3 startups à passer de 0 à 1M€ d'ARR en moins de 18 mois.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1.5rem;">
+                <span style="font-weight: 700;">480€ <span style="font-size:0.7rem; color:var(--ink-soft)">/ jour</span></span>
+                <a href="#" style="color:var(--primary); font-weight:700; text-decoration:none; font-size:0.8rem">Voir profil →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="offres" class="reveal" style="background: #fafaf9; max-width: 100%; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <span class="section-tag">Featured Jobs</span>
+        <h2>Opportunités de carrière.</h2>
+        
+        <div class="job-row">
+            <div class="job-info">
+                <h3>Senior Backend Developer (Go)</h3>
+                <div class="job-meta">
+                    <span> Qonto</span>
+                    <span> Paris / Remote</span>
+                    <span> 75k - 9000</span>
+                </div>
+            </div>
+            <a href="#" class="btn btn-outline">Postuler maintenant</a>
+        </div>
+
+        <div class="job-row">
+            <div class="job-info">
+                <h3>Head of Design</h3>
+                <div class="job-meta">
+                    <span> Alan</span>
+                    <span> Remote Europe</span>
+                    <span> 90k - 120k€</span>
+                </div>
+            </div>
+            <a href="#" class="btn btn-outline">Postuler maintenant</a>
+        </div>
+
+        <div class="job-row">
+            <div class="job-info">
+                <h3>Analytics Engineer</h3>
+                <div class="job-meta">
+                    <span> Back Market</span>
+                    <span> Bordeaux / Hybride</span>
+                    <span> 55k - 70k€</span>
+                </div>
+            </div>
+            <a href="#" class="btn btn-outline">Postuler maintenant</a>
+        </div>
+    </div>
+</section>
+
+<footer style="padding: 4rem 5%; border-top: 1px solid var(--line); text-align: center;">
+    <a href="#" class="logo">Talent<span>Link</span></a>
+    <p style="margin-top: 1.5rem; color: var(--ink-soft); font-size: 0.9rem;">© 2026 TalentLink. L'excellence au service de l'humain.</p>
+    <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;">
+        <a href="#" style="color:var(--ink); text-decoration:none; font-size: 0.8rem; font-weight: 600;">Twitter</a>
+        <a href="#" style="color:var(--ink); text-decoration:none; font-size: 0.8rem; font-weight: 600;">LinkedIn</a>
+        <a href="#" style="color:var(--ink); text-decoration:none; font-size: 0.8rem; font-weight: 600;">Contact</a>
+    </div>
+</footer>
+
+<script>
+    function toggleTab(el, type) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+        // Animation simple pour le contenu (optionnel)
+    }
+
+    // Animation d'entrée au scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
