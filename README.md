@@ -17,4 +17,4 @@ git add README.md
 git commit -m "docs: ajout des informations d'auteur et de date"
 
 #Ajout de la page d'acceuil
-#Fusion des branches
+#Fusion des branches(mqin et feature/hom)
