@@ -18,4 +18,6 @@ git commit -m "docs: ajout des informations d'auteur et de date"
 
 #Ajout de la page d'acceuil
 
-#Fusion des branches :main et feature/home et cretion de conflits.
+
+#Fusion des branches :main et feature/home et cretion des conflits.
+
