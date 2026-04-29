@@ -1,0 +1,1 @@
+console.log("camepay v0.1.0 - En cours de developpement");
